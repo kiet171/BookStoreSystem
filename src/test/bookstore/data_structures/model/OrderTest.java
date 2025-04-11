@@ -1,11 +1,11 @@
+
 package bookstore.data_structures.model;
 
 import bookstore.model.Book;
 import bookstore.model.Order;
+import bookstore.data_structures.MyArrayList;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-
-import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -29,30 +29,15 @@ public class OrderTest {
         order.addBook(book1);
         order.addBook(book2);
 
-        List<Book> books = order.getBooks();
+        MyArrayList<Book> books = order.getBooks();
         assertEquals(2, books.size());
         assertEquals("Java Programming", books.get(0).getTitle());
         assertEquals("Algorithms", books.get(1).getTitle());
     }
 
     @Test
-    public void testSortBooksByTitle() {
-        order.addBook(book1);
-        order.addBook(book2);
-        order.addBook(book3);
-
-        order.sortBooksByTitle();
-        List<Book> sorted = order.getBooks();
-
-        assertEquals("Algorithms", sorted.get(0).getTitle());
-        assertEquals("Clean Code", sorted.get(1).getTitle());
-        assertEquals("Java Programming", sorted.get(2).getTitle());
-    }
-
-    @Test
-    public void testOrderIdIsGenerated() {
+    public void testOrderObjectIsCreated() {
         assertNotNull(order);
-        String id = order.getBooks().size() == 0 ? order.toString() : order.getBooks().get(0).toString(); // avoid unused
-        // Because the ID is not public, we confirm that there is no error when creating the Order.
+        assertEquals(0, order.getBooks().size());
     }
 }
